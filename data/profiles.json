@@ -1,0 +1,281 @@
+{
+  "profiles": [
+    {
+      "id": "maya-rivera",
+      "name": "Maya Rivera",
+      "title": "Systems engineer and public-interest technologist",
+      "summary": "Designs resilient field systems and mentors junior engineers while connecting technical work to civic outcomes.",
+      "claims": [
+        {
+          "id": "claim-1",
+          "label": "Project leadership",
+          "text": "Led a cross-functional team to modernize a river monitoring system that reduced manual reporting from two days to thirty minutes.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-01-15"
+        },
+        {
+          "id": "claim-2",
+          "label": "Mentorship",
+          "text": "Mentored four early-career engineers through design reviews and code coaching on reliability improvements.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-03-11"
+        },
+        {
+          "id": "claim-3",
+          "label": "Community support",
+          "text": "Partnered with local NGOs to translate technical metrics into community-facing public dashboards and training sessions.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2024-09-20"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "artifact-1",
+          "type": "project_summary",
+          "title": "Monitoring stack modernization",
+          "text": "Deployed edge sensors, improved alerting, and documented operations runbooks for environmental data quality checks.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2024-11-02"
+        },
+        {
+          "id": "artifact-2",
+          "type": "talk_abstract",
+          "title": "Resilient civic data systems",
+          "text": "Presented an architecture for making sensor data actionable across public agencies, emphasizing operational trust and maintenance mentoring.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-05-08"
+        },
+        {
+          "id": "artifact-3",
+          "type": "mentorship_note",
+          "title": "Junior engineer coaching",
+          "text": "Reviewed test coverage, created onboarding guides, and facilitated peer learning after deployment incidents.",
+          "provenance": "synthetic_internal_note",
+          "visibility": "team",
+          "date": "2025-02-26"
+        }
+      ],
+      "consent": {
+        "share_profile": true,
+        "share_artifacts": true,
+        "allow_comparison": true
+      }
+    },
+    {
+      "id": "liam-chen",
+      "name": "Liam Chen",
+      "title": "Applied ML engineer with formal credentials",
+      "summary": "Strong record in model deployment, metrics, and technical communication; less evidence of broad mentoring or public-interest systems work.",
+      "claims": [
+        {
+          "id": "claim-4",
+          "label": "Model deployment",
+          "text": "Delivered an inference service for customer segmentation with robust monitoring and retraining pipelines.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-04-01"
+        },
+        {
+          "id": "claim-5",
+          "label": "Credentials",
+          "text": "Completed a graduate certificate in machine learning and holds a professional software engineering credential.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2024-07-12"
+        },
+        {
+          "id": "claim-6",
+          "label": "Technical writing",
+          "text": "Published architecture notes for model observability and safe deployment checkpoints in production environments.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-06-01"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "artifact-4",
+          "type": "project_summary",
+          "title": "Customer segmentation platform",
+          "text": "Built dashboards and model accuracy monitoring for a customer recommender system used by digital marketing teams.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-01-29"
+        },
+        {
+          "id": "artifact-5",
+          "type": "code_description",
+          "title": "CI pipeline optimization",
+          "text": "Reduced model validation time with automated retraining checks and threshold alerts for production drift.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2024-12-14"
+        }
+      ],
+      "consent": {
+        "share_profile": true,
+        "share_artifacts": true,
+        "allow_comparison": true
+      }
+    },
+    {
+      "id": "sana-igwe",
+      "name": "Sana Igwe",
+      "title": "Human-centered AI facilitator",
+      "summary": "Bridges technical systems and community practice through facilitation, evaluation design, and domain translation.",
+      "claims": [
+        {
+          "id": "claim-7",
+          "label": "Facilitation",
+          "text": "Facilitated workshops to map stakeholder needs and translated technical constraints into actionable service design decisions.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-02-17"
+        },
+        {
+          "id": "claim-8",
+          "label": "Evaluation design",
+          "text": "Co-designed a human factors evaluation plan for an AI-assisted decision support tool in public health settings.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2024-08-21"
+        },
+        {
+          "id": "claim-9",
+          "label": "Community learning",
+          "text": "Created open-learning guides for nontechnical teams to understand model limitations and correct unsafe assumptions.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-06-12"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "artifact-6",
+          "type": "talk_abstract",
+          "title": "Participatory AI design",
+          "text": "Explored participatory methods for evaluating trust, consent, and feedback loops in diagnostic decision support systems.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-03-06"
+        },
+        {
+          "id": "artifact-7",
+          "type": "mentorship_note",
+          "title": "Practice-based mentoring",
+          "text": "Guided researchers in how to run debriefs, solicit feedback, and document uncertainty after implementation review cycles.",
+          "provenance": "synthetic_internal_note",
+          "visibility": "team",
+          "date": "2025-01-18"
+        }
+      ],
+      "consent": {
+        "share_profile": true,
+        "share_artifacts": true,
+        "allow_comparison": true
+      }
+    },
+    {
+      "id": "rohan-patel",
+      "name": "Rohan Patel",
+      "title": "Embedded systems engineer with hardware and software depth",
+      "summary": "Brings edge-compute experience and field diagnostics, with moderate evidence of public-facing project narratives and mentoring.",
+      "claims": [
+        {
+          "id": "claim-10",
+          "label": "Hardware integration",
+          "text": "Integrated sensor arrays and on-device analytics to improve machine uptime in a fleet monitoring product.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2024-11-14"
+        },
+        {
+          "id": "claim-11",
+          "label": "Reliability work",
+          "text": "Documented fault analysis and preventive maintenance procedures for embedded edge devices in remote sites.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-02-02"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "artifact-8",
+          "type": "project_summary",
+          "title": "Field diagnostics for edge systems",
+          "text": "Improved sensor calibration workflows and built diagnostic tooling for maintenance teams across multiple deployments.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-03-24"
+        }
+      ],
+      "consent": {
+        "share_profile": true,
+        "share_artifacts": true,
+        "allow_comparison": true
+      }
+    },
+    {
+      "id": "nina-oluwaseyi",
+      "name": "Nina Oluwaseyi",
+      "title": "Independent researcher and systems builder",
+      "summary": "Combines research methods, software implementation, and evidence communication with a less traditional but relevant profile.",
+      "claims": [
+        {
+          "id": "claim-12",
+          "label": "Research translation",
+          "text": "Turned qualitative user studies into product requirements and accompanying technical prototypes for verification loops.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2024-09-01"
+        },
+        {
+          "id": "claim-13",
+          "label": "Open evaluation",
+          "text": "Shared a reproducible evaluation checklist for measuring uncertainty communication and stakeholder understanding.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-05-22"
+        },
+        {
+          "id": "claim-14",
+          "label": "Mentor support",
+          "text": "Coached students on responsible experimentation by reviewing evidence framing and correction workflows.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-02-11"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "artifact-9",
+          "type": "talk_abstract",
+          "title": "Signals, context, and correction",
+          "text": "Discussed how interpretability signals, provenance labels, and human correction mechanisms affect practical trust in assistance systems.",
+          "provenance": "synthetic_self_report",
+          "visibility": "public",
+          "date": "2025-04-27"
+        },
+        {
+          "id": "artifact-10",
+          "type": "code_description",
+          "title": "Open evaluation notebook",
+          "text": "Published a notebook comparing evidence coverage, uncertainty, and calibration across demonstrator scenarios.",
+          "provenance": "synthetic_third_party_artifact",
+          "visibility": "public",
+          "date": "2025-06-17"
+        }
+      ],
+      "consent": {
+        "share_profile": true,
+        "share_artifacts": true,
+        "allow_comparison": true
+      }
+    }
+  ]
+}

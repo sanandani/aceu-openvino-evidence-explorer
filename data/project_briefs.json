@@ -1,0 +1,40 @@
+{
+  "briefs": [
+    {
+      "id": "brief-smart-city",
+      "title": "Smart city resilience engineer",
+      "description": "We need a professional who can connect sensor systems, civic operations, and public communication. We value evidence of reliable deployment, support for other teams, and responsible reporting of uncertainty.",
+      "focus_areas": [
+        "systems reliability",
+        "public infrastructure",
+        "mentorship",
+        "communication",
+        "uncertainty handling"
+      ]
+    },
+    {
+      "id": "brief-ai-safety",
+      "title": "Human-centered AI review lead",
+      "description": "We are seeking someone who can design evaluation plans, support nontechnical teams, and translate findings into careful, context-aware recommendations for AI-assisted decision support.",
+      "focus_areas": [
+        "evaluation design",
+        "human factors",
+        "responsible AI",
+        "stakeholder facilitation",
+        "trust and intervention"
+      ]
+    },
+    {
+      "id": "brief-edge-ml",
+      "title": "Edge ML operations specialist",
+      "description": "We need a candidate with strong deployment experience, maintenance discipline, and evidence of practical troubleshooting in embedded or operational settings.",
+      "focus_areas": [
+        "embedded systems",
+        "deployment",
+        "operations",
+        "monitoring",
+        "diagnostics"
+      ]
+    }
+  ]
+}
