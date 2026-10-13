@@ -60,6 +60,6 @@ This demo is explicitly not a hiring product. It should be used only for reprodu
 
 ## License and model card maintenance
 
-- Model checkpoint license: verify the current Hugging Face card before publication.
+- Model checkpoint license: Apache-2.0, as stated on the [Hugging Face model card](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) (checked 2026-10-12). Review the checkpoint terms before redistribution.
 - This project code is MIT-licensed.
 - This document should be updated whenever the embedding model or evidence rules change.

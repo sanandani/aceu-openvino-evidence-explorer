@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import platform
+from importlib.metadata import PackageNotFoundError, version
 from typing import Sequence
 
 import numpy as np
@@ -22,7 +23,7 @@ class OpenVINOEmbedder:
             self.model = SentenceTransformer(self.model_name, backend="openvino", device=self.device)
         except Exception as exc:
             raise RuntimeError(
-                "OpenVINO initialization failed. Install the project dependencies from requirements.txt and ensure the model can be downloaded or is already cached."
+                f"OpenVINO initialization failed for model '{self.model_name}' on {self.device}. Check installed dependencies and model download/cache. Details: {exc}"
             ) from exc
 
     def encode(self, texts: Sequence[str]) -> np.ndarray:
@@ -52,10 +53,17 @@ class OpenVINOEmbedder:
 
     @property
     def info(self) -> dict[str, str]:
+        packages = {}
+        for package in ("sentence-transformers", "openvino", "optimum-intel", "streamlit"):
+            try:
+                packages[package] = version(package)
+            except PackageNotFoundError:
+                packages[package] = "not installed"
         return {
             "model_id": self.model_name,
             "backend": self.backend_name,
             "device": self.device,
             "platform": platform.platform(),
             "machine": platform.machine(),
+            "packages": ", ".join(f"{name}={value}" for name, value in packages.items()),
         }

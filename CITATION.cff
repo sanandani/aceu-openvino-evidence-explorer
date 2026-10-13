@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this demonstration, please cite the paper that inspired it."
+title: "ACE-U Evidence Explorer"
+type: software
+authors:
+  - family-names: Anandani
+    given-names: Shubham
+    website: https://www.imshubh.com
+repository-code: https://github.com/sanandani/aceu-openvino-evidence-explorer
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "Trust-Aware Professional Identity Representation in AI-Mediated Systems"
+  authors:
+    - family-names: Anandani
+      given-names: Shubham
+  collection-title: SoutheastCon
+  year: 2026

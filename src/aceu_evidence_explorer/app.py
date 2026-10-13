@@ -55,7 +55,7 @@ def _render_technical_details(embedder: OpenVINOEmbedder) -> None:
     st.write(f"Device: {info['device']}")
     st.write(f"Platform: {info['platform']}")
     st.write(f"Machine: {info['machine']}")
-    st.write("Package versions: sentence-transformers=5.7.0, openvino=2025.4.1, optimum-intel=1.26.0, streamlit=1.45.1")
+    st.write(f"Package versions: {info['packages']}")
 
 
 def _render_dimension_panel(dimensions: list[dict[str, Any]]) -> None:
@@ -74,11 +74,7 @@ def main() -> None:
     st.title("ACE-U Evidence Explorer")
     st.caption("Illustrative, synthetic OpenVINO-backed evidence review for a conceptual ACE-U framework. Not a hiring product or a verified identity assessment.")
 
-    try:
-        embedder = OpenVINOEmbedder()
-    except RuntimeError as exc:
-        _render_error(str(exc))
-        return
+    embedder = OpenVINOEmbedder()
 
     profiles = load_profiles()
     briefs = load_briefs()
@@ -169,6 +165,7 @@ def main() -> None:
     st.write("- Provenance labels are explicit and synthetic, not credential validation.")
     st.write("- The ACE-U mapping is illustrative and configurable, not a validated assessment model.")
     st.write("- This demo is not for hiring decisions, candidate ranking, or identity verification.")
+    st.markdown("<div style='text-align:center;color:#777'>Built by Shubham Anandani · <a href='https://www.imshubh.com'>imshubh.com</a></div>", unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
