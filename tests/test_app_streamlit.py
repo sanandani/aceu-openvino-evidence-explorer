@@ -20,6 +20,7 @@ class FakeEmbedder:
             "device": "cpu",
             "platform": "Darwin",
             "machine": "x86_64",
+            "packages": "sentence-transformers=test, openvino=test, optimum-intel=test, streamlit=test",
         }
 
     def similarity(self, query_text: str, candidate_texts: list[str]):

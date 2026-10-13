@@ -30,3 +30,4 @@ env/
 
 # Benchmark artifacts
 benchmark_results.json
+.venv/

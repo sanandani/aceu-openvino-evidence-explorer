@@ -11,3 +11,4 @@ def test_openvino_embedding_inference_runs():
     embeddings = embedder.encode(["public interest engineering", "community mentoring and systems design"])
     assert embeddings.shape[0] == 2
     assert embeddings.shape[1] > 0
+    assert abs(float((embeddings[0] @ embeddings[1]) / (__import__("numpy").linalg.norm(embeddings[0]) * __import__("numpy").linalg.norm(embeddings[1])))) < 0.99999

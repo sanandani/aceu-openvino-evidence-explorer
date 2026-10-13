@@ -4,70 +4,74 @@ import json
 import platform
 import sys
 import time
+from importlib.metadata import PackageNotFoundError, version
 
 import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer
 
+from .config import DEFAULT_MODEL
+
 SAMPLE_INPUTS = [
     "We need a public-interest systems engineer with mentorship and reliability experience.",
     "We need a human-centered AI review lead focused on evaluation design and uncertainty communication.",
     "We need someone who can troubleshoot edge deployments and support operational teams.",
+    "A community technology organizer documented accessible workshops and outcomes.",
 ]
+BATCH_SIZES = (1, 2, 4)
+REPEATS = 30
+WARMUP = 5
 
 
-def _get_env() -> dict[str, str]:
-    return {
-        "python": sys.version.split()[0],
-        "platform": platform.platform(),
-        "machine": platform.machine(),
-        "torch": torch.__version__,
-    }
+def _versions() -> dict[str, str]:
+    names = ("torch", "sentence-transformers", "openvino", "optimum-intel", "numpy")
+    result = {}
+    for name in names:
+        try:
+            result[name] = version(name)
+        except PackageNotFoundError:
+            result[name] = "not installed"
+    return result
 
 
-def _run_benchmark(model_backend: str, repeats: int = 30, warmup: int = 5) -> dict[str, float | int | str | dict[str, str]]:
-    if model_backend == "pytorch":
-        model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device="cpu")
-    else:
-        model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", backend="openvino", device="CPU")
-
+def _run(model: SentenceTransformer, texts: list[str], repeats: int) -> tuple[dict[str, float], np.ndarray]:
+    for _ in range(WARMUP):
+        model.encode(texts, batch_size=len(texts), normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
     timings = []
-    for _ in range(warmup):
-        _ = model.encode(SAMPLE_INPUTS, normalize_embeddings=True, convert_to_numpy=True)
-
+    embeddings = None
     for _ in range(repeats):
         start = time.perf_counter()
-        _ = model.encode(SAMPLE_INPUTS, normalize_embeddings=True, convert_to_numpy=True)
+        embeddings = model.encode(texts, batch_size=len(texts), normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
         timings.append(time.perf_counter() - start)
-
-    arr = np.asarray(timings, dtype=np.float64)
-    throughput = (len(SAMPLE_INPUTS) * repeats) / float(np.sum(arr))
-    return {
-        "backend": model_backend,
-        "warmup": warmup,
-        "repeats": repeats,
-        "p50_ms": float(np.percentile(arr * 1000, 50)),
-        "p95_ms": float(np.percentile(arr * 1000, 95)),
-        "throughput_per_sec": float(throughput),
-        "avg_ms": float(np.mean(arr * 1000)),
-        "env": _get_env(),
-    }
+    elapsed = np.asarray(timings) * 1000
+    return ({"p50_ms": float(np.percentile(elapsed, 50)), "p95_ms": float(np.percentile(elapsed, 95)),
+             "throughput_texts_per_sec": float(len(texts) * repeats / np.sum(elapsed / 1000))},
+            np.asarray(embeddings, dtype=np.float32))
 
 
 def main() -> None:
-    results = {
-        "benchmark": {
-            "inputs": SAMPLE_INPUTS,
-            "batch_size": len(SAMPLE_INPUTS),
-            "results": [
-                _run_benchmark("pytorch"),
-                _run_benchmark("openvino"),
-            ],
-        }
+    torch_model = SentenceTransformer(DEFAULT_MODEL, device="cpu")
+    openvino_model = SentenceTransformer(DEFAULT_MODEL, backend="openvino", device="cpu")
+    result: dict[str, object] = {
+        "hardware": {"platform": platform.platform(), "machine": platform.machine(), "processor": platform.processor(), "python": sys.version.split()[0]},
+        "versions": _versions(), "model_id": DEFAULT_MODEL, "pooling": "model native Sentence Transformers pooling",
+        "normalization": "L2", "warmup_runs": WARMUP, "repeats": REPEATS, "batch_sizes": {},
     }
-    print(json.dumps(results, indent=2))
+    for batch_size in BATCH_SIZES:
+        texts = SAMPLE_INPUTS[:batch_size]
+        pytorch, torch_embeddings = _run(torch_model, texts, REPEATS)
+        openvino, ov_embeddings = _run(openvino_model, texts, REPEATS)
+        cosine = np.sum(torch_embeddings * ov_embeddings, axis=1) / np.maximum(
+            np.linalg.norm(torch_embeddings, axis=1) * np.linalg.norm(ov_embeddings, axis=1), 1e-12)
+        result["batch_sizes"][str(batch_size)] = {
+            "texts": texts, "pytorch_cpu": pytorch, "openvino_cpu": openvino,
+            "embedding_cosine_parity_mean": float(np.mean(cosine)),
+            "embedding_cosine_parity_min": float(np.min(cosine)),
+        }
+    output = json.dumps(result, indent=2)
+    print(output)
     with open("benchmark_results.json", "w", encoding="utf-8") as handle:
-        json.dump(results, handle, indent=2)
+        handle.write(output + "\n")
 
 
 if __name__ == "__main__":
