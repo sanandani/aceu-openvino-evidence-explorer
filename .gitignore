@@ -31,3 +31,7 @@ env/
 # Benchmark artifacts
 benchmark_results.json
 .venv/
+
+build/
+dist/
+*.egg-info/
