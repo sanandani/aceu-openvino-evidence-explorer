@@ -32,6 +32,8 @@ All data is synthetic. Embedding similarity does not verify identity, authentici
 
 The app uses `sentence-transformers/all-MiniLM-L6-v2` through Sentence Transformers' OpenVINO backend on CPU. OpenVINO initialization errors are surfaced as errors. The weights are downloaded to the local Hugging Face cache on first run and are not committed.
 
+By default, the app reads `data/profiles.json` and `data/project_briefs.json` from the repository. Set `ACEU_DATA_DIR` to another directory containing both files when running an installed package or container with data stored separately.
+
 ## Benchmark
 
 Run one command to compare PyTorch CPU and OpenVINO CPU using the same model, texts, native pooling, L2 normalization, and batch sizes. It performs warm-up and repeated runs, reports p50/p95 latency, throughput, embedding cosine parity, hardware and installed versions, prints the result, and saves `benchmark_results.json`.
